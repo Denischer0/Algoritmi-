@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main(){
+	vector<int> A = { 5,2,6,1 };
+	vector<int> B = {};
+	int a = 0;
+	while (a < A.size() - 1) {
+		int f = a;
+		int k = 0;
+		while (f < A.size()-1) {
+			if (A[a] > A[f + 1]) {
+				k++;
+			}
+			f++;
+
+		}
+		B.push_back(k);
+		cout << k << ",";
+		a++;
+	}
+	
+	cout << "0";
+}
