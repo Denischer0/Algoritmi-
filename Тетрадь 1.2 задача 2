@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-int main(){
-	vector<int> A = { 0,1,2,3,4,3,2,1,0 };
+int main() {
+	vector<int> A = { 0,1,2,3,7,3,2,1,0 };
 	int mid, left = 0, right = A.size() - 1;
 	int maximum = 0;
 	while (left <= right) {
@@ -13,11 +13,11 @@ int main(){
 		else if (left > A[mid]) {
 			maximum = mid;
 			right = mid - 1;
-			cout << left-1;
+			cout << "pik na meste " << left - 1;
 			break;
 		}
 		else {
-			cout << left-1;
+			cout << left - 1;
 			break;
 		}
 	}
