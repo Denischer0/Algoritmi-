@@ -2,7 +2,6 @@
 #include <vector>
 using namespace std;
 int main(){
-
 	int left = 0,x;
 	vector<int> A = { -5,-3,-2,-1,2,4 };
 	int right = A.size() - 1;
@@ -28,12 +27,7 @@ int main(){
 		if (A[mid] > x) {
 			right = mid - 1;
 		}
-	
-
-
 	}
-	
-	
 	if (res == -1) {
 		if (x > A[A.size() - 1]) {
 			cout << "otrisatelnih chisel bolshe";
@@ -47,7 +41,6 @@ int main(){
 				if (x > A[a] and x<A[a+1]) {
 					break;
 				}
-
 			}
 			if (a + 1 > A.size() / 2) {
 				cout << "otrisatelnih chisel bolshe";
@@ -55,10 +48,6 @@ int main(){
 			else {
 				cout << "polozhitelnih chisel bolshe";
 			}
-		}
-
-			
-		
-	}
-	
+		}	
+	}	
 }
