@@ -2,18 +2,14 @@
 #include <vector>
 using namespace std;
 int main(){
-
-	int left = 0,x;
 	vector<int> A = { 1,2,3,4,5,6,7,8,9,10,11,13,14,15 };
-	int right = A.size() - 1;
-	int a = 0, y = A.size() - 1;
+	int right = A.size() - 1,left = 0,x,a = 0, y = A.size() - 1,mid,res=-1;
 	cout << "Vvedite chislo" << endl;
 	cin >> x;
-	int mid,res=-1;
 	while (left <= right) {
 		mid = (left + right) / 2;
 		if (A[mid] == x) {
-			cout << "Chislo mozhno postavit na mesto " << mid << endl;
+			cout << "Chislo stoit na meste " << mid << endl;
 			res = mid;
 			break;
 		}
@@ -23,12 +19,7 @@ int main(){
 		if (A[mid] > x) {
 			right = mid - 1;
 		}
-	
-
-
 	}
-	
-	
 	if (res == -1) {
 		if (x > A[A.size() - 1]) {
 			cout << "Chisla v massive net, no ego mozhno vstavit na mesto " << y << endl;
@@ -45,8 +36,5 @@ int main(){
 				}
 			}
 		}
-
-			
-
-		}
 	}
+}
