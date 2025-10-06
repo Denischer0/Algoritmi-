@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int n = 1000;
+
+int main()
+{
+    int n;
+    cout << "Vvedite chislo" << endl;
+    cin >> n;
+    vector<int> resheto;
+    vector<int> arr;
+    int k = 0;
+    while (k != n) {
+        arr.push_back(0);
+        k++;
+    }
+
+    for (int i = 2; i < n; i++)
+    {
+        for (int j = i * i; j < n; j += i)
+        {
+            arr[j - 1] = 1;
+        }
+    }
+    for (int i = 1; i < n; i++)
+    {
+        if (arr[i - 1] == 0)
+            resheto.push_back(i);
+    }
+    if (count(resheto.begin(), resheto.end(), n) > 0) {
+        cout << "factorizatsiya chisla " << n << ": " << "1 " << n << endl;
+    }
+    else {
+        int f = 1;
+        cout << "factorizatsiya chisla " << n << ": ";
+        while (f != n+1) {
+            if (n % f == 0) {
+                cout << f << ", ";
+
+            } 
+            f++;
+        }
+    } 
+    
+
+}
