@@ -6,52 +6,55 @@ int n = 1000;
 
 int main()
 {
-    int n;
     cout << "Vvedite chislo" << endl;
+    int n;
     cin >> n;
     vector<int> resheto;
-    vector<int> arr;
-    int k = 0;
-    while (k != n) {
-        arr.push_back(0);
-        k++;
+    vector<int> a;
+    for (int i = 0; i <= n+1; i++) {
+        a.push_back(i);
     }
-
-    for (int i = 2; i < n; i++)
-    {
-        for (int j = i * i; j < n; j += i)
-        {
-            arr[j - 1] = 1;
+    for (int i = 2; i * i <= n+1; i++) {
+        if (a[i] != 0) {
+            for (int j = i * i; j <= n+1; j += i) {
+                a[j] = 0;
+            }
         }
     }
-    for (int i = 1; i < n; i++)
-    {
-        if (arr[i - 1] == 0)
-            resheto.push_back(i);
+    for (int i = 2; i < n+1; i++) {
+        if (a[i]!=0)
+        {
+            resheto.push_back(a[i]);
+        }
     }
-    if ((count(resheto.begin(), resheto.end(), n)) > 0) {
-        cout << "factorizatsiya chisla " << n << ": " << "1 " << n << endl;
+    int h = 0, ff = 0;
+    while (h < resheto.size()) {
+        if (resheto[h] == n) {
+            ff=1;
+            break;
+        }
+        h++;
+    }
+    if (ff == 1) {
+        cout << "factorizatsiya chisla " << n << ": " << n << "^1" << endl;
         exit(0);
     }
-    else  {
+    else {
         vector<int> deliteli;
-        int f = 1;
+        int f = 0;
         int n1 = n;
         cout << "factorizatsiya chisla " << n << ": ";
-        while (n1 != 1) {
-
-
-            while (f != n - 2) {
-                if (n1 % resheto[f] == 0) {
-                    n1 = n1 / resheto[f];
-                    deliteli.push_back(resheto[f]);
-                }
-                else {
-                    f++;
-                }
+       
+        while ((f != resheto.size()-1) or (n1!=1) ) {
+            if (n1 % resheto[f] == 0) {
+                n1 = n1 / resheto[f];
+                deliteli.push_back(resheto[f]);
             }
-            f = 1;
+            else {
+                f++;
+            }
         }
+            f = 0;
         int len = deliteli.size(), f1 = 1;
         while (f != len - 1) {
             if (deliteli[f] == deliteli[f + 1]) {
@@ -59,15 +62,11 @@ int main()
                 f++;
             }
             else {
-                cout << deliteli[f] << "^" << f1 << "* ";
+                cout << deliteli[f] << "^" << f1 << " * ";
                 f1 = 1;
                 f++;
             }
         }
+        cout << deliteli[deliteli.size() - 1] << "^1";
     }
- }
-
-
-
-
-
+}
