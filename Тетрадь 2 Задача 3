@@ -53,6 +53,7 @@ int reshet(int n) {
     return ff;
 }
 int main() {
+    vector<int> deliteli;
     cout << "Vvedite polozhitelnoe nechetnoye chislo" << endl;
     int n;
     cin >> n;
@@ -98,24 +99,36 @@ int main() {
             exit(0);
         }
         else if (reshet(delitel1) == 1 and reshet(delitel2) == 0) {
-            cout << delitel1 << " * ";
+            deliteli.push_back(delitel1);
             A = metod_ferma(delitel2, 0, 0);
             delitel1 = A[0];
             delitel2 = A[1];
         }
         else if (reshet(delitel1) == 0 and reshet(delitel2) == 1) {
-            cout << delitel2 << " * ";
+            deliteli.push_back(delitel2);
             A = metod_ferma(delitel1, 0, 0);
             delitel1 = A[0];
             delitel2 = A[1];
         }
         else if (reshet(delitel1) == 0 and reshet(delitel2) == 0) {
-
+            while (f != 1) {
+                if (reshet(delitel1) == 1 and reshet(delitel2) == 1) {
+                    deliteli.push_back(delitel1);
+                    deliteli.push_back(delitel2);
+                    break;
+                }
+                else if (reshet(delitel1) == 1 and reshet(delitel2) == 0) {
+                    deliteli.push_back(delitel1);
+                    A = metod_ferma(delitel2, 0, 0);
+                    delitel1 = A[0];
+                    delitel2 = A[1];
+                }
+                else if (reshet(delitel1) == 0 and reshet(delitel2) == 1) {
+                    deliteli.push_back(delitel2);
+                    A = metod_ferma(delitel1, 0, 0);
+                    delitel1 = A[0];
+                    delitel2 = A[1];
         }
     }
 
 }                                 //сделать массив и в него добавлять делители все, потом сортануть и как во второй сделать вывод.
-
-
-
-
