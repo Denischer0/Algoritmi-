@@ -1,1 +1,121 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+vector<int> metod_ferma(int n, int delitel1, int delitel2) {
+    int m = sqrt(n);
+    int x = 1;
+    int q = 0;
+    int koren_iz_q = 0;
+    while (true) {
+        q = (m + x) * (m + x) - n;
+        koren_iz_q = sqrt(q);
+        if (koren_iz_q * koren_iz_q == q) {
+            break;
+        }
+        else {
+            x++;
+        }
+    }
+
+    delitel1 = (m + x) - koren_iz_q;
+    delitel2 = (m + x) + koren_iz_q;
+    vector<int> A = { delitel1,delitel2 };
+    return A;
+}
+int reshet(int n) {
+    int ff = 0, h = 0;
+    vector<int> resheto;
+    vector<int> a;
+    for (int i = 0; i <= n + 1; i++) {
+        a.push_back(i);
+    }
+    for (int i = 2; i * i <= n + 1; i++) {
+        if (a[i] != 0) {
+            for (int j = i * i; j <= n + 1; j += i) {
+                a[j] = 0;
+            }
+        }
+    }
+    for (int i = 2; i < n + 1; i++) {
+        if (a[i] != 0)
+        {
+            resheto.push_back(a[i]);
+        }
+    }
+    while (h < resheto.size()) {
+        if (resheto[h] == n) {
+            ff = 1;
+            break;
+        }
+        h++;
+    }
+    return ff;
+}
+int main() {
+    cout << "Vvedite polozhitelnoe nechetnoye chislo" << endl;
+    int n;
+    cin >> n;
+    if (n <= 0 or n % 2 == 0) {
+        cout << "Vvedeno nekorektnoe chislo";
+        exit(0);
+    }
+    /*vector<int> resheto;
+    vector<int> a;
+    for (int i = 0; i <= n + 1; i++) {
+        a.push_back(i);
+    }
+    for (int i = 2; i * i <= n + 1; i++) {
+        if (a[i] != 0) {
+            for (int j = i * i; j <= n + 1; j += i) {
+                a[j] = 0;
+            }
+        }
+    }
+    for (int i = 2; i < n + 1; i++) {
+        if (a[i] != 0)
+        {
+            resheto.push_back(a[i]);
+        }
+    }*/
+    int delitel1 = 0;
+    int delitel2 = 0;
+    int f = 0;
+    int h = 0, ff = 0;
+    cout << "factorizatsiya chisla " << n << ": ";
+    vector<int> A;
+    A = metod_ferma(n, delitel1, delitel2);
+    delitel1 = A[0];
+    delitel2 = A[1];
+
+    if (reshet(n) == 1) {
+        cout << "factorizatsiya chisla " << n << ": " << n << "^1" << endl;
+        exit(0);
+    }
+    while (f != 1) {
+        if (reshet(delitel1) == 1 and reshet(delitel2) == 1) {
+            cout << delitel1 << "^1" << " * " << delitel2 << "^1";
+            exit(0);
+        }
+        else if (reshet(delitel1) == 1 and reshet(delitel2) == 0) {
+            cout << delitel1 << " * ";
+            A = metod_ferma(delitel2, 0, 0);
+            delitel1 = A[0];
+            delitel2 = A[1];
+        }
+        else if (reshet(delitel1) == 0 and reshet(delitel2) == 1) {
+            cout << delitel2 << " * ";
+            A = metod_ferma(delitel1, 0, 0);
+            delitel1 = A[0];
+            delitel2 = A[1];
+        }
+        else if (reshet(delitel1) == 0 and reshet(delitel2) == 0) {
+
+        }
+    }
+
+}
+
+
+
 
