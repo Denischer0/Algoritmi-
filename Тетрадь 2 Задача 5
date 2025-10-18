@@ -24,6 +24,9 @@ int main() {
 		n5 = n2[l + 2];
 		n6 = n2[l + 3];
 		n7 = n2[l + 4];
+		if (n3 == "0") {
+			n3 = "1";
+		}
 		n8 = n3 + n4 + n5 + n6 + n7;
 		cout << n8 << endl;
 		n = stoi(n8);
