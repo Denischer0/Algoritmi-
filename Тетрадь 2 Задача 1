@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 int main() {
-	cout << "Vvedite 3 chisla ne ravnih 0" << endl;
+	cout << "Vvedite 4 chisla ne ravnih 0" << endl;
 	int A, B, C, D;
 	cin >> A >> B >> C >> D;
 	A = abs(A);
