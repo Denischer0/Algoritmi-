@@ -2,41 +2,62 @@
 #include <cmath>
 #include <string>
 using namespace std;
+int nod(int a, int b) {  
+	while (b != 0) {
+		int x = b;
+		b = a % b;
+		a = x;
+	}
+	return a;
+}
 int main() {
-	cout << "Vvedite 4 chisla ne ravnih 0" << endl;
+	cout << "Vvedite 4 chisla" << endl;
 	int A, B, C, D;
 	cin >> A >> B >> C >> D;
 	A = abs(A);
 	B = abs(B);
 	C = abs(C);
 	D = abs(D);
-	if (A == 0 or B == 0 or C == 0 or D == 0) {
-		cout << "Chisla vvedeni nekorektno";
-		exit(0);
+	if (A == 0 and (B!=0 or C!=0 or D!=0)) {
+		cout << "NOD raven " << nod(nod(B,C),D);
 	}
-	while (A != B) {
-		if (A > B) {
-			A = A - B;
-		}
-		else {
-			B = B - A;
-		}
+	else if (B == 0 and (A != 0 or C != 0 or D != 0)) {
+		cout << "NOD raven " << nod(nod(A, C), D);
 	}
-	while (B != C) {
-		if (B > C) {
-			B = B - C;
-		}
-		else {
-			C = C - B;
-		}
+	else if (C == 0 and (B != 0 or A != 0 or D != 0)) {
+		cout << "NOD raven " << nod(nod(A, B), D);
 	}
-	while (C != D) {
-		if (C > D) {
-			C = C - D;
-		}
-		else {
-			D = D - C;
-		}
+	else if (D == 0 and (B != 0 or C != 0 or A != 0))  {
+		cout << "NOD raven " << nod(nod(A, B), C);
 	}
-	cout << "NOD raven " << D << endl;
+	else if (A != 0 and B != 0 and C!=0 and D!=0) {
+		while (A != B) {
+			if(A>B){
+				A = A - B;
+			}
+			else {
+				B = B - A;
+			}
+		}
+		while (B != C) {
+			if (B > C) {
+				B = B - C;
+			}
+			else {
+				C = C - B;
+			}
+		}
+		while (C != D) {
+			if (C > D) {
+				C = C - D;
+			}
+			else {
+				D = D - C;
+			}
+		}
+		cout << "NOD raven " << D << endl;
+	}
+	else {
+		cout << "Chisla vvedeni ne correctno" << endl;
+	}
 }
