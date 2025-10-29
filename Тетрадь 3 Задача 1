@@ -1,0 +1,136 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+vector<int> Chislo(int x) {
+	vector<int> A;
+	int rndm=0;
+	while (x != 0) {
+		rndm = rand()%10;
+		A.push_back(rndm);
+		x--;
+	}
+	return A;
+}
+int main() {
+	cout << "Vvedite dlinu chisla" << endl;
+	int x,f;
+	cin >> x;
+	vector<int> A,B;
+	A = Chislo(x);
+	B = Chislo(x);
+	cout << "Chislo 1: ";
+	for (int i = 0; i < A.size(); i++) {
+		cout << A[i];
+	}
+	cout << endl << "Chislo 2: ";
+	for (int i = 0; i < B.size(); i++) {
+		cout << B[i];
+	}
+	for (int i = 0; i<x; i++) {
+		if (A[i] > B[i]) {
+			f = 1;
+			cout << endl << "Chislo 1 bolshe chisla 2";
+			break;			// A>B
+			
+		}
+		else if (A[i] < B[i]) {
+			f = 2;
+			cout << endl << "Chislo 2 bolshe chisla 1";
+			break;			// B>A
+			
+		}
+		else if (A[i] == B[i]) {
+			f = 3;
+		}					// A = B
+	}
+	if (f == 3) {
+		cout << endl << "Chislo 1 ravno chislu 2";
+	}
+	int ch1=0, ch2=0;
+	vector<int> C;
+	for (int i = x - 1; i >= 0; i--) {
+		ch1 = ch1 + A[i] + B[i];
+		if (ch1 > 9) {
+			ch2 = 1;
+		}
+		else {
+			ch2 = 0;
+		}
+		ch1 = ch1 % 10;
+		C.push_back(ch1);
+		ch1 = ch2;
+	}
+	if (ch1 == 1) {
+		C.push_back(1);
+	}
+	cout << endl;
+	cout << "Summa chisel ravna: ";
+	for (int i = C.size() - 1; i >= 0; i--) {
+		cout << C[i];
+	}
+	
+	
+	
+	if (f == 3) {
+		cout << endl << "Raznost chisel ravna: 0";
+		exit(0);
+	}
+	if (f == 1) {
+		C = {};
+		ch1 = 0;
+		for (int i = x - 1; i >= 0; i--) {
+			ch1 = ch1 + A[i] - B[i];
+			if (ch1 <0) {
+				ch2 = -1;
+				ch1 = ch1 + 10;
+			}
+			else {
+				ch2 = 0;
+			}
+			C.push_back(ch1);
+			ch1 = ch2;
+		}
+		cout << endl;
+		cout << "Raznost chisel ravna: ";
+		if (C[0] == 0) {
+			for (int i = 1; i < C.size(); i++) {
+				cout << C[i];
+			}
+		}
+		else {
+			for (int i = 0; i < C.size(); i++) {
+				cout << C[i];
+			}
+		}
+		exit(0);
+	}
+	if (f == 2) {
+		C = {};
+		ch1 = 0;
+		for (int i = x - 1; i >= 0; i--) {
+			ch1 = ch1 + B[i] - A[i];
+			if (ch1 < 0) {
+				ch2 = -1;
+				ch1 = ch1 + 10;
+			}
+			else {
+				ch2 = 0;
+			}
+			C.push_back(ch1);
+			ch1 = ch2;
+		}
+		cout << endl;
+		cout << "Raznost chisel ravna: ";
+		if (C[0] == 0) {
+			for (int i = 1; i < C.size(); i++) {
+				cout << C[i];
+			}
+		}
+		else {
+			for (int i = 0; i < C.size(); i++) {
+				cout << C[i];
+			}
+		}
+		exit(0);
+	}
+}
