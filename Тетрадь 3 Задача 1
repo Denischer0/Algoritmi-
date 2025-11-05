@@ -3,9 +3,9 @@
 using namespace std;
 vector<int> Chislo(int x) {
 	vector<int> A;
-	int rndm=0;
+	int rndm = 0;
 	while (x != 0) {
-		rndm = rand()%10;
+		rndm = rand() % 10;
 		A.push_back(rndm);
 		x--;
 	}
@@ -13,9 +13,9 @@ vector<int> Chislo(int x) {
 }
 int main() {
 	cout << "Vvedite dlinu chisla" << endl;
-	int x,f;
+	int x, f;
 	cin >> x;
-	vector<int> A,B;
+	vector<int> A, B;
 	A = Chislo(x);
 	B = Chislo(x);
 	cout << "Chislo 1: ";
@@ -26,18 +26,18 @@ int main() {
 	for (int i = 0; i < B.size(); i++) {
 		cout << B[i];
 	}
-	for (int i = 0; i<x; i++) {
+	for (int i = 0; i < x; i++) {
 		if (A[i] > B[i]) {
 			f = 1;
 			cout << endl << "Chislo 1 bolshe chisla 2";
 			break;			// A>B
-			
+
 		}
 		else if (A[i] < B[i]) {
 			f = 2;
 			cout << endl << "Chislo 2 bolshe chisla 1";
 			break;			// B>A
-			
+
 		}
 		else if (A[i] == B[i]) {
 			f = 3;
@@ -46,7 +46,7 @@ int main() {
 	if (f == 3) {
 		cout << endl << "Chislo 1 ravno chislu 2";
 	}
-	int ch1=0, ch2=0;
+	int ch1 = 0, ch2 = 0;
 	vector<int> C;
 	for (int i = x - 1; i >= 0; i--) {
 		ch1 = ch1 + A[i] + B[i];
@@ -68,9 +68,9 @@ int main() {
 	for (int i = C.size() - 1; i >= 0; i--) {
 		cout << C[i];
 	}
-	
-	
-	
+
+
+
 	if (f == 3) {
 		cout << endl << "Raznost chisel ravna: 0";
 		exit(0);
@@ -78,9 +78,9 @@ int main() {
 	if (f == 1) {
 		C = {};
 		ch1 = 0;
-		for (int i = x - 1; i >= 0; i--) {
+		for (int i = x - 1; i >= 0; i--) {					
 			ch1 = ch1 + A[i] - B[i];
-			if (ch1 <0) {
+			if (ch1 < 0) {
 				ch2 = -1;
 				ch1 = ch1 + 10;
 			}
@@ -92,15 +92,17 @@ int main() {
 		}
 		cout << endl;
 		cout << "Raznost chisel ravna: ";
-		if (C[0] == 0) {
-			for (int i = 1; i < C.size(); i++) {
-				cout << C[i];
+		int k = 0;
+		for (int i = C.size()-1; i >=0; i--) {
+			if (C[i]==0) {
+				k++;
+			}
+			else {
+				break;
 			}
 		}
-		else {
-			for (int i = 0; i < C.size(); i++) {
-				cout << C[i];
-			}
+		for (int i = C.size() - (k+1); i >= 0; i--) {
+			cout << C[i];
 		}
 		exit(0);
 	}
@@ -121,15 +123,17 @@ int main() {
 		}
 		cout << endl;
 		cout << "Raznost chisel ravna: ";
-		if (C[0] == 0) {
-			for (int i = 1; i < C.size(); i++) {
-				cout << C[i];
+		int k = 0;
+		for (int i = C.size() - 1; i >= 0; i--) {
+			if (C[i] == 0) {
+				k++;
+			}
+			else {
+				break;
 			}
 		}
-		else {
-			for (int i = 0; i < C.size(); i++) {
-				cout << C[i];
-			}
+		for (int i = C.size() - (k + 1); i >= 0; i--) {
+			cout << C[i];
 		}
 		exit(0);
 	}
