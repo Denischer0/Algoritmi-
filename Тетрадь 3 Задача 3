@@ -20,11 +20,11 @@ vector<int> reverse(vector<int> x) {
 	return y;
 }
 int main() {
-	cout << "Vvedite pervoe dvoichnoe chislo" << endl;
+	cout << "Vvedite pervoe chislo" << endl;
 	string a, b;
 	vector<int> ch1{ 0 }, ch2 = { 0 };
 	cin >> a;
-	cout << "Vvedite vtoroe dvoichnoe chislo" << endl;
+	cout << "Vvedite vtoroe chislo" << endl;
 	cin >> b;
 	string c = "";
 	if (a.size() > b.size()) {
