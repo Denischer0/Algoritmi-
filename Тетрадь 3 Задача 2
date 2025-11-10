@@ -76,6 +76,7 @@ int main() {
 		}
 	}
 	print(ch1, ch2);
+	cout << endl;
 	vector<int> ch3 = {}, ch4 = {};
 	int k = 0, l = ch1.size();
 	while (ch2 != vector<int>(l, 0)) {
@@ -124,6 +125,7 @@ int main() {
 		ch1 = reverse(ch3);
 		ch2 = reverse(ch4);
 		print(ch1, ch2);
+		cout << endl;
 		ch3 = {};
 		ch4 = {};
 	}
