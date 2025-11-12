@@ -1,1 +1,118 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+void print(vector<int> x) {
+	cout << endl;
+	for (int i = 0; i < x.size(); i++) {							
+		cout << x[i] << " ";
+	}
+}
+vector<int> reverse(vector<int> x) {
+	vector<int> y = {};
+	for (int i = x.size() - 1; i >= 0; i--) {
+		y.push_back(x[i]);
+	}
+	return y;
+}
+vector<int> dobav(vector<int> x) {
+	vector <int> y = { 0 };
+	for (int i = 0; i < x.size(); i++) {
+		y.push_back(x[i]);
+	}
+	return y;
+}
+vector<int> norm(vector<int> x) {
+	vector<int> y;
+	int k = 0;
+	int f = 2;
+	while (f > 1) {
+		f = 1;
+		y = {};
+		for (int i = 0; i < y.size(); i++) {
+			if (y[i] < 10) {
+			}
+			else {
+				f++;
+			}
+		}
 
+		for (int i = x.size() - 1; i >= 0; i--) {
+			y.push_back(x[i] % 10 + k);
+			k = x[i] / 10;	
+		}
+		x = y;
+	}
+	return y;
+
+}
+int main() {
+	vector<int> ch1 = {}, ch2 = {};
+	string a, b;
+	cout << "Vvedite pervoe chislo" << endl;
+	cin >> a;
+	cout << "Vvedite vtoroe chislo" << endl;
+	cin >> b;
+	for (int i = 0; i < a.size(); i++) {
+		ch1.push_back((a[i] - '0'));
+	}
+	for (int i = 0; i < b.size(); i++) {
+		ch2.push_back(b[i] - '0');
+	}
+	int m;
+	if (ch1.size() > ch2.size()) {
+		m = ch1.size();
+	}
+	else {
+		m = ch2.size();
+	}
+	vector<int> proizvedenie = {};
+	for (int i = 0; i <= m; i++) {
+		proizvedenie.push_back(0);
+	}
+	for (int j = ch2.size() - 1; j >= 0; j--) {
+		for (int i = ch1.size() - 1; i >= 0; i--) {
+			proizvedenie[i]=proizvedenie[i]+(ch1[i] * ch2[j]);
+		}
+		proizvedenie = dobav(proizvedenie);
+	}
+	int f = 0;
+	while (f < 1) {
+		f = 1;
+		for (int i = 0; i < proizvedenie.size(); i++) {
+			if (proizvedenie[i] < 10) {
+			}
+			else {
+				f--;
+			}
+		}
+		proizvedenie = norm(proizvedenie);
+	}
+	proizvedenie = reverse(proizvedenie);
+	string proizv = "";
+	if (proizvedenie[0] != 0) {
+		for (int i = 0; i < proizvedenie.size() - 1; i++) {
+			proizv = proizv + to_string(proizvedenie[i]);
+		}
+	}
+	else {
+		for (int i = 1; i < proizvedenie.size() - 1; i++) {
+			proizv = proizv + to_string(proizvedenie[i]);
+		}
+	}
+	int d = 0;
+	for (int i = 0; i < proizv.size(); i++) {
+		if (proizv[i] == '0') {
+		}
+		else {
+			d = 1;
+			break;
+		}
+	}
+	if (d == 0) {
+		cout << endl << proizv;
+	}
+	else {
+		cout << 0;
+	}
+}
