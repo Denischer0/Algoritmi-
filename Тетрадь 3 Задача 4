@@ -44,7 +44,6 @@ vector<int> norm(vector<int> x) {
 		x = y;
 	}
 	return y;
-
 }
 int main() {
 	vector<int> ch1 = {}, ch2 = {};
@@ -53,6 +52,10 @@ int main() {
 	cin >> a;
 	cout << "Vvedite vtoroe chislo" << endl;
 	cin >> b;
+	if (a == "0" or b == "0") {
+		cout << 0;
+		exit(0);
+	}
 	for (int i = 0; i < a.size(); i++) {
 		ch1.push_back((a[i] - '0'));
 	}
@@ -100,19 +103,5 @@ int main() {
 			proizv = proizv + to_string(proizvedenie[i]);
 		}
 	}
-	int d = 0;
-	for (int i = 0; i < proizv.size(); i++) {
-		if (proizv[i] == '0') {
-		}
-		else {
-			d = 1;
-			break;
-		}
-	}
-	if (d == 0) {
-		cout << endl << proizv;
-	}
-	else {
-		cout << 0;
-	}
+	cout << proizv;
 }
