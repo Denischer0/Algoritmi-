@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, d;
+    cout << "Input a, b:  ";
+    cin >> n >> d;
+
+    if (d == 0) {
+        cout << "Деление на ноль невозможно\n";
+        return 1;
+    }
+
+    int left = 0;
+    int right = n >= 0 ? n : -n; 
+    int q = 0;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        int prod = mid * d;
+
+        if (prod <= n) {
+            q = mid;
+            left = mid + 1;
+        }
+        else {
+            right = mid - 1;
+        }
+    }
+
+    int remainder = n - q * d;
+
+    cout << "Частное: " << q << "\n";
+    cout << "Остаток: " << remainder << "\n";
+
+    return 0;
+}
