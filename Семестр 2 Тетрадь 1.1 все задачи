@@ -1,0 +1,78 @@
+Задача 1
+
+print("Введите количество взятых бейджиков")
+n=int(input())
+Vsyatie=[]
+Otdannie=[]
+print("Введите номера взятых бейджиков в столбик")
+for i in range (n):
+    x=int(input())
+    Vsyatie.append(x)
+print("Введите номера отданных бейджиков")
+for i in range (n):
+    x=str(input())
+    if x=="":
+        break
+    else:
+        Otdannie.append(int(x))
+l=len(Vsyatie)
+for i in range(l):
+    if not(Vsyatie[i] in Otdannie):
+        print("Бейджик под номером ",Vsyatie[i]," не был возвращён")           
+
+Задача 2
+
+print("Введите количество студентов")
+KolvoStud=int(input())
+Balli=[]
+print("Введите баллы студентов в столбик")
+for i in range(KolvoStud):
+    x=int(input())
+    Balli.append(x)
+if sum(Balli)%2!=0:
+    print("NO")
+else:
+    print("YES")
+
+
+Задача 3
+
+print("Введите количество студентов")
+n=int(input())
+print("Введите голоса студентов в столбик")
+Golosa=[]
+for i in range(n):
+    x=int(input())
+    Golosa.append(x)
+p=n//2
+f=0
+for i in range(n):
+    if Golosa.count(Golosa[i])> p:
+        print("За проект под номером ",Golosa[i]," проголосовало больше половины студентов")
+        f=1
+        break
+if f==0:
+    print("Такого проекта нет")
+
+Задача 4
+
+print("Введите количество оценок студентов")
+n=int(input())
+Ocenki=[]
+print("Введите оценки студентов в столбик")
+for i in range(n):
+    x=int(input())
+    Ocenki.append(x)
+dlin=1
+ma=0
+for i in range(n-1):
+    if Ocenki[i]==Ocenki[i+1]:
+        dlin+=1
+    else:
+        if dlin>ma:
+            ma=dlin
+            dlin=0
+        else:
+            dlin=0
+print(ma)
+
